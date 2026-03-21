@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoDigitize Online | US Neural Infrastructure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        :root { --primary: #3b82f6; --accent: #8b5cf6; --bg-dark: #020617; }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: var(--bg-dark); color: #f8fafc; overflow-x: hidden; }
+        
+        #cursor-pulse {
+            position: fixed; width: 450px; height: 450px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+            pointer-events: none; z-index: 99; transform: translate(-50%, -50%);
+        }
+
+        .mesh-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%); z-index: -1; }
+        .glass-card { background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 2.5rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        
+        .hero-title { font-size: clamp(3.5rem, 9vw, 7rem); line-height: 0.85; font-weight: 800; letter-spacing: -0.05em; }
+
+        @keyframes floatingBox { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-25px) rotate(1deg); } }
+        .animate-float { animation: floatingBox 7s ease-in-out infinite; }
+
+        .input-field { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 1.25rem; padding: 1.25rem; width: 100%; color: white; outline: none; }
+        .input-field:focus { border-color: var(--primary); background: rgba(59, 130, 246, 0.05); }
+
+        .faq-content { max-height: 0; overflow: hidden; transition: all 0.5s ease; opacity: 0; }
+        .faq-item.active .faq-content { max-height: 500px; padding-top: 1.5rem; opacity: 1; }
+        #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: #3b82f6; z-index: 200; width: 0%; }
+    </style>
+</head>
+<body class="selection:bg-blue-500/30">
+    <div id="progress-bar"></div>
+    <div id="cursor-pulse"></div>
+    <div class="mesh-bg"></div>
+
+    <nav class="fixed top-0 w-full z-[150] px-6 py-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-card px-10 py-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/20"><i data-lucide="zap" class="w-6 h-6 text-white"></i></div>
+                <span class="text-2xl font-bold italic tracking-tighter">GoDigitize<span class="text-blue-500">.Online</span></span>
+            </div>
+            <div class="hidden lg:flex space-x-12 text-[11px] font-black uppercase tracking-[0.3em] text-gray-500">
+                <a href="#solutions" class="hover:text-white transition">Systems</a>
+                <a href="#infra" class="hover:text-white transition">US Core</a>
+                <a href="#queries" class="hover:text-white transition">Technical</a>
+            </div>
+            <button onclick="document.getElementById('contact').scrollIntoView()" class="bg-white text-black px-8 py-3 rounded-2xl text-xs font-black hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105">BOOK AUDIT</button>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center px-6 pt-32">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+            <div class="animate__animated animate__fadeInLeft">
+                <div class="inline-flex items-center space-x-3 bg-blue-500/5 border border-blue-500/10 px-5 py-2 rounded-full text-blue-400 text-[11px] font-black tracking-[0.4em] mb-10 uppercase">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span>
+                    <span>US_EAST_NODE_ACTIVE v2.1</span>
+                </div>
+                <h1 class="hero-title mb-10">Stop Trading <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500">Human Time</span> <br>For Growth.</h1>
+                <p class="text-gray-400 text-2xl max-w-xl mb-12 leading-relaxed font-light">The neural operating system built exclusively for high-scale US Home Service enterprises.</p>
+                <div class="flex flex-wrap gap-6">
+                    <button onclick="document.getElementById('contact').scrollIntoView()" class="bg-blue-600 px-12 py-6 rounded-[2rem] font-black flex items-center space-x-4 hover:bg-blue-700 transition shadow-2xl shadow-blue-600/30">
+                        <span>DEPLOY NEURAL CORE</span><i data-lucide="arrow-right"></i>
+                    </button>
+                    <div class="flex items-center space-x-4 ml-4">
+                        <div class="w-12 h-12 rounded-full border border-blue-500/30 bg-blue-500/10 flex items-center justify-center font-bold italic text-blue-400">MR</div>
+                        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest leading-none">Melvin Ross<br><span class="text-blue-500/50 italic">Chief Systems Engineer</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative hidden lg:block animate-float">
+                <div class="w-full aspect-square glass-card p-16 flex flex-col justify-between border-white/10 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="flex justify-between items-start relative z-10">
+                        <i data-lucide="cpu" class="text-blue-500 w-12 h-12"></i>
+                        <div class="text-right">
+                            <span class="block font-mono text-[10px] text-blue-400">HOST: US-EAST-1</span>
+                            <span class="block font-mono text-[10px] text-gray-600 uppercase">LATENCY: 12MS</span>
+                        </div>
+                    </div>
+                    <div class="p-10 bg-white/5 rounded-[3rem] border border-white/5 flex flex-col items-center justify-center relative z-10">
+                        <i data-lucide="activity" class="text-blue-500 w-24 h-24 animate-pulse"></i>
+                        <p class="mt-4 text-[9px] font-black text-gray-600 uppercase tracking-widest">Processing US Traffic</p>
+                    </div>
+                    <div class="flex justify-between items-center relative z-10">
+                        <span class="text-[10px] font-bold text-gray-600 italic">GoDigitize Core</span>
+                        <div class="flex space-x-1"><div class="w-1 h-3 bg-blue-500/30"></div><div class="w-1 h-5 bg-blue-500"></div><div class="w-1 h-2 bg-blue-500/50"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-black mb-20 italic uppercase tracking-tighter text-center">The <span class="text-blue-500">GoDigitize</span> Edge</h2>
+            <div class="overflow-x-auto glass-card p-8 md:p-16">
+                <table class="w-full text-left">
+                    <thead><tr class="border-b border-white/10"><th class="pb-8 text-gray-500 uppercase tracking-widest text-xs">Feature Set</th><th class="pb-8 text-gray-500 uppercase tracking-widest text-xs">Old Model</th><th class="pb-8 text-blue-500 uppercase tracking-widest text-xs">GoDigitize Neural</th></tr></thead>
+                    <tbody class="text-lg">
+                        <tr class="border-b border-white/5"><td class="py-8 font-bold">Response Speed</td><td class="py-8 text-gray-500">10-15 Minutes</td><td class="py-8 text-white font-black">< 3 Seconds</td></tr>
+                        <tr class="border-b border-white/5"><td class="py-8 font-bold">Availability</td><td class="py-8 text-gray-500">Office Hours</td><td class="py-8 text-white font-black">24/7/365 Native</td></tr>
+                        <tr><td class="py-8 font-bold">Integration</td><td class="py-8 text-gray-500">Manual Entry</td><td class="py-8 text-blue-400 font-black">ServiceTitan / Jobber API</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="infra" class="py-32 px-6 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto glass-card p-16 md:p-24 relative overflow-hidden">
+            <div class="absolute -right-40 -top-40 w-96 h-96 bg-blue-600/10 blur-[120px]"></div>
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="text-4xl font-black mb-8 italic uppercase tracking-tighter text-blue-500">US-Native Infrastructure</h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-10">Optimized for domestic high-performance. Our neural hosting is distributed across Tier-3 data centers in North America to ensure zero-latency voice synthesis and total data residency compliance.</p>
+                    <div class="space-y-8">
+                        <div class="flex items-center space-x-6">
+                            <div class="w-12 h-12 glass-card rounded-xl flex items-center justify-center"><i data-lucide="shield-check" class="text-blue-500"></i></div>
+                            <div><p class="font-black text-sm uppercase tracking-widest">SOC2 & HIPAA Ready</p><p class="text-gray-500 text-xs">Bank-grade data encryption protocols.</p></div>
+                        </div>
+                        <div class="flex items-center space-x-6">
+                            <div class="w-12 h-12 glass-card rounded-xl flex items-center justify-center"><i data-lucide="server" class="text-purple-500"></i></div>
+                            <div><p class="font-black text-sm uppercase tracking-widest">US-East & West Nodes</p><p class="text-gray-500 text-xs">Redundant hosting for 99.99% uptime.</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card h-[300px] border-blue-500/20 bg-blue-500/5 flex flex-col items-center justify-center">
+                    <i data-lucide="shield" class="w-20 h-20 text-blue-500 mb-6 animate-pulse"></i>
+                    <p class="font-mono text-[10px] text-gray-500 uppercase tracking-[0.4em]">Secure_US_Core: ACTIVE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 px-6 bg-gradient-to-b from-transparent to-blue-900/10">
+        <div class="max-w-5xl mx-auto glass-card p-12 md:p-24 border-blue-500/20 shadow-2xl relative">
+            <div class="text-center mb-16">
+                <h2 class="text-6xl font-black mb-6 tracking-tighter italic uppercase">Reach <span class="text-blue-500">The Core.</span></h2>
+                <p class="text-gray-500 uppercase text-[11px] font-black tracking-[0.5em] mb-10">Connect Directly with Engineering</p>
+                
+                <div class="flex flex-col items-center gap-4">
+                    <a href="mailto:melvin@godigitize.online" class="text-2xl md:text-5xl font-bold text-blue-400 hover:text-white transition duration-500 underline decoration-blue-500/30 underline-offset-[12px] break-all">
+                        melvin@godigitize.online
+                    </a>
+                    <span class="text-[10px] font-black uppercase text-gray-600 tracking-widest mt-2">Personal Line: Melvin Ross</span>
+                </div>
+            </div>
+            
+            <form action="https://formspree.io/f/xbdzekwl" method="POST" class="grid md:grid-cols-2 gap-10">
+                <div class="space-y-3"><label class="text-[11px] uppercase font-black text-gray-600 ml-4 tracking-[0.2em]">Founder Identity</label><input type="text" name="name" placeholder="Full Name" required class="input-field"></div>
+                <div class="space-y-3"><label class="text-[11px] uppercase font-black text-gray-600 ml-4 tracking-[0.2em]">Neural Link (Email)</label><input type="email" name="email" placeholder="owner@company.com" required class="input-field"></div>
+                <div class="md:col-span-2 space-y-3"><label class="text-[11px] uppercase font-black text-gray-600 ml-4 tracking-[0.2em]">Operations Bottleneck</label><textarea name="details" placeholder="Describe the manual processes you want to automate..." class="input-field h-52"></textarea></div>
+                <button type="submit" class="md:col-span-2 bg-blue-600 py-8 rounded-[2.5rem] font-black text-2xl hover:bg-blue-700 transition shadow-2xl shadow-blue-500/40 group flex items-center justify-center gap-4">
+                    AUTHORIZE CONNECTION <i data-lucide="zap"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-24 text-center border-t border-white/5 opacity-40">
+        <p class="text-[10px] font-black tracking-[0.5em] uppercase mb-4 text-blue-500">GoDigitize Online | USA Core</p>
+        <p class="text-xs text-gray-600 font-mono">SOC2 Compliant • North American Nodes • AES-256 Encryption</p>
+        <p class="mt-8 text-[9px] uppercase tracking-[1em]">© 2026 Engineering Growth for US Home Services</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const pulse = document.getElementById('cursor-pulse');
+        document.addEventListener('mousemove', (e) => { pulse.style.left = e.clientX + 'px'; pulse.style.top = e.clientY + 'px'; });
+        window.addEventListener('scroll', () => {
+            const bar = document.getElementById('progress-bar');
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = ((window.pageYOffset / total) * 100) + '%';
+        });
+    </script>
+</body>
+</html>
