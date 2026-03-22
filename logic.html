@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoDigitize Logic | US Home Service Automation</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        :root { --primary: #3b82f6; --accent: #8b5cf6; --bg-dark: #020617; }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: var(--bg-dark); color: #f8fafc; overflow-x: hidden; }
+        
+        #cursor-pulse {
+            position: fixed; width: 450px; height: 450px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+            pointer-events: none; z-index: 99; transform: translate(-50%, -50%);
+        }
+
+        .mesh-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%); z-index: -1; }
+        .glass-card { background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 2.5rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        
+        .hero-title { font-size: clamp(3rem, 7vw, 5rem); line-height: 0.9; font-weight: 800; letter-spacing: -0.05em; }
+
+        @keyframes floatingBox { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-25px) rotate(1deg); } }
+        .animate-float { animation: floatingBox 7s ease-in-out infinite; }
+
+        .logic-step { position: relative; padding-left: 4rem; margin-bottom: 5rem; }
+        .logic-step::before { content: attr(data-step); position: absolute; left: 0; top: -10px; font-size: 5rem; font-weight: 900; color: rgba(59, 130, 246, 0.1); font-style: italic; font-family: 'Space Grotesk', sans-serif; }
+        
+        .nav-link { text-[11px] font-black uppercase tracking-[0.3em] text-gray-500 hover:text-white transition; }
+    </style>
+</head>
+<body class="selection:bg-blue-500/30">
+    <div id="cursor-pulse"></div>
+    <div class="mesh-bg"></div>
+
+    <nav class="fixed top-0 w-full z-[150] px-6 py-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-card px-10 py-4">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-xl shadow-lg shadow-blue-600/20 object-cover">
+                    <span class="text-2xl font-bold italic tracking-tighter">GoDigitize<span class="text-blue-500">.Online</span></span>
+                </a>
+            </div>
+            <div class="hidden lg:flex space-x-12">
+                <a href="logic.html" class="nav-link text-white">System Logic</a>
+                <a href="insights.html" class="nav-link">Insights</a>
+                <a href="index.html#contact" class="nav-link">Support</a>
+            </div>
+            <a href="index.html#contact" class="bg-blue-600 text-white px-8 py-3 rounded-2xl text-xs font-black hover:bg-white hover:text-black transition-all transform hover:scale-105">DEPLOY CORE</a>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-40 px-6 pb-24">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-16 items-start">
+            
+            <div class="md:col-span-8 animate__animated animate__fadeIn">
+                <div class="inline-flex items-center space-x-3 bg-blue-500/5 border border-blue-500/10 px-5 py-2 rounded-full text-blue-400 text-[11px] font-black tracking-[0.4em] mb-8 uppercase">
+                    <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+                    <span>NEURAL_ENGINEERING_DOCS</span>
+                </div>
+                
+                <h1 class="hero-title mb-10">Total Operations <span class="text-blue-500">Synchronization.</span></h1>
+                
+                <p class="text-gray-400 text-2xl max-w-3xl mb-16 font-light leading-relaxed">GoDigitize isn't software; it’s a living infrastructure. We map your established workflows onto a custom-trained neural core, turning hours of manual labor into seconds of machine precision.</p>
+
+                <div class="space-y-10">
+                    <div class="logic-step" data-step="01">
+                        <div class="glass-card p-10 flex flex-col md:flex-row gap-8 items-start">
+                            <i data-lucide="cable" class="w-20 h-20 text-blue-500 mt-2 flex-shrink-0"></i>
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4">ServiceTitan & Jobber API Integration</h3>
+                                <p class="text-gray-400 leading-relaxed mb-6">Our core hooks directly into your Field Service Management (FSM) platform. We don’t just read data; we use bi-directional sync to update job statuses, dispatch technicians, and sync invoices the moment an action is triggered.</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-[10px] uppercase font-black tracking-widest bg-white/5 px-4 py-2 rounded-full text-gray-400">SOC2 Ready</span>
+                                    <span class="text-[10px] uppercase font-black tracking-widest bg-blue-500/10 px-4 py-2 rounded-full text-blue-300">Bi-Directional</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="logic-step" data-step="02">
+                        <div class="glass-card p-10 flex flex-col md:flex-row gap-8 items-start">
+                            <i data-lucide="speech" class="w-20 h-20 text-purple-500 mt-2 flex-shrink-0"></i>
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4">Domestic Voice Synthesis (US Dialect)</h3>
+                                <p class="text-gray-400 leading-relaxed mb-6">For outbound follow-ups or inbound scheduling, our system utilizes custom-trained domestic voice models. This ensures zero latency and total comfort for your customers, who interact with a native US dialect, rather than an offshore agent or robotic synthesizer.</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-[10px] uppercase font-black tracking-widest bg-white/5 px-4 py-2 rounded-full text-gray-400">Redundant Nodes</span>
+                                    <span class="text-[10px] uppercase font-black tracking-widest bg-purple-500/10 px-4 py-2 rounded-full text-purple-300">Zero Latency</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="logic-step" data-step="03">
+                        <div class="glass-card p-10 flex flex-col md:flex-row gap-8 items-start">
+                            <i data-lucide="route" class="w-20 h-20 text-green-500 mt-2 flex-shrink-0"></i>
+                            <div>
+                                <h3 class="text-3xl font-bold mb-4">Autonomous Scheduling Logic</h3>
+                                <p class="text-gray-400 leading-relaxed mb-6">The system analyzes technician location, skill set, and traffic patterns in real-time. If a new, high-priority emergency call comes in, the neural core re-routes your team instantly, notifying affected customers and dispatchers automatically, maximizing billable hours.</p>
+                                <div class="flex flex-wrap gap-3">
+                                    <span class="text-[10px] uppercase font-black tracking-widest bg-white/5 px-4 py-2 rounded-full text-gray-400">Tier-3 Data Center</span>
+                                    <span class="text-[10px] uppercase font-black tracking-widest bg-green-500/10 px-4 py-2 rounded-full text-green-300">Predictive Routing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <aside class="md:col-span-4 sticky top-40 animate-float hidden lg:block">
+                <div class="glass-card p-10 border-blue-500/20 shadow-2xl shadow-blue-500/10">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="w-12 h-12 rounded-full border border-blue-500/30 bg-blue-500/10 flex items-center justify-center font-bold italic text-blue-400">MR</div>
+                        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest leading-none">Melvin Ross<br><span class="text-blue-500/50 italic">Engineering Lead</span></p>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-6 italic tracking-tight">Need a logic audit?</h4>
+                    <p class="text-gray-500 mb-10 text-sm leading-relaxed">Let's analyze your current manual bottlenecks and show you the exact logic stack we would deploy to eliminate them.</p>
+                    <a href="index.html#contact" class="block text-center bg-blue-600 px-10 py-5 rounded-2xl font-black text-xs hover:bg-white hover:text-black transition transform hover:scale-105">REQUEST LOGIC AUDIT</a>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="py-16 text-center border-t border-white/5 opacity-40 px-6">
+        <p class="text-[10px] font-black tracking-[0.5em] uppercase mb-4 text-blue-500">GoDigitize Online | USA Core</p>
+        <p class="text-xs text-gray-600 font-mono">SOC2 Compliant • North American Nodes • AES-256 Encryption</p>
+        <p class="mt-8 text-[9px] uppercase tracking-[1em]">© 2026 Engineering Growth for US Home Services</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const pulse = document.getElementById('cursor-pulse');
+        document.addEventListener('mousemove', (e) => { pulse.style.left = e.clientX + 'px'; pulse.style.top = e.clientY + 'px'; });
+    </script>
+</body>
+</html>
