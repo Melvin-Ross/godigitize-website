@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoDigitize Insights | Automation Strategies for US Home Services</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        :root { --primary: #3b82f6; --accent: #8b5cf6; --bg-dark: #020617; }
+        body { font-family: 'Space Grotesk', sans-serif; background-color: var(--bg-dark); color: #f8fafc; overflow-x: hidden; }
+        
+        #cursor-pulse {
+            position: fixed; width: 450px; height: 450px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+            pointer-events: none; z-index: 99; transform: translate(-50%, -50%);
+        }
+
+        .mesh-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%); z-index: -1; }
+        .glass-card { background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 2.5rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        
+        .hero-title { font-size: clamp(3rem, 7vw, 5rem); line-height: 0.9; font-weight: 800; letter-spacing: -0.05em; }
+
+        @keyframes floatingBox { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-25px) rotate(1deg); } }
+        .animate-float { animation: floatingBox 7s ease-in-out infinite; }
+
+        .article-card { height: 100%; display: flex; flex-col; justify-between; }
+        .nav-link { text-[11px] font-black uppercase tracking-[0.3em] text-gray-500 hover:text-white transition; }
+    </style>
+</head>
+<body class="selection:bg-blue-500/30">
+    <div id="cursor-pulse"></div>
+    <div class="mesh-bg"></div>
+
+    <nav class="fixed top-0 w-full z-[150] px-6 py-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-card px-10 py-4">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-xl shadow-lg shadow-blue-600/20 object-cover">
+                    <span class="text-2xl font-bold italic tracking-tighter">GoDigitize<span class="text-blue-500">.Online</span></span>
+                </a>
+            </div>
+            <div class="hidden lg:flex space-x-12">
+                <a href="logic.html" class="nav-link">System Logic</a>
+                <a href="insights.html" class="nav-link text-white">Insights</a>
+                <a href="index.html#contact" class="nav-link">Support</a>
+            </div>
+            <a href="index.html#contact" class="bg-blue-600 text-white px-8 py-3 rounded-2xl text-xs font-black hover:bg-white hover:text-black transition-all transform hover:scale-105">BOOK AUDIT</a>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-40 px-6 pb-24">
+        <div class="max-w-7xl mx-auto animate__animated animate__fadeIn">
+            
+            <div class="text-center mb-24">
+                <div class="inline-flex items-center space-x-3 bg-blue-500/5 border border-blue-500/10 px-5 py-2 rounded-full text-blue-400 text-[11px] font-black tracking-[0.4em] mb-8 uppercase">
+                    <i data-lucide="zap" class="w-4 h-4 text-blue-500"></i>
+                    <span>OPERATIONAL_INTELLIGENCE</span>
+                </div>
+                <h1 class="hero-title mb-6">Automation <span class="text-blue-500">Insights</span>.</h1>
+                <p class="text-gray-400 text-2xl max-w-2xl mx-auto font-light leading-relaxed">Deep dives into engineering sustainable growth for US Home Service enterprises.</p>
+            </div>
+
+            
+            <div class="grid md:grid-cols-2 gap-10">
+                
+                <div class="glass-card p-10 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <i data-lucide="microscope" class="w-16 h-16 text-blue-500 group-hover:animate-pulse transition"></i>
+                            <span class="text-[10px] uppercase font-black tracking-widest bg-blue-500/10 px-4 py-2 rounded-full text-blue-300">Strategy_Report</span>
+                        </div>
+                        <h3 class="text-4xl font-extrabold mb-6 italic tracking-tight leading-none text-white group-hover:text-blue-400 transition">The 3 Seconds Rule: Zero-Latency Lead Response.</h3>
+                        <p class="text-gray-400 leading-relaxed mb-10 text-lg">In the US Home Services market, responding in 15 minutes is equivalent to not responding at all. Our engineers analyze how automating instant, direct-to-FSM lead insertion changes conversion rates from 18% to over 60%.</p>
+                    </div>
+                    <div class="flex justify-between items-center text-[11px] font-black uppercase text-gray-500 tracking-[0.3em] border-t border-white/5 pt-8">
+                        <span>Read Analysis</span>
+                        <i data-lucide="arrow-right-circle" class="w-6 h-6 text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all"></i>
+                    </div>
+                </div>
+
+                
+                <div class="glass-card p-10 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-start mb-12">
+                            <i data-lucide="cpu" class="w-16 h-16 text-purple-500 group-hover:animate-pulse transition"></i>
+                            <span class="text-[10px] uppercase font-black tracking-widest bg-purple-500/10 px-4 py-2 rounded-full text-purple-300">Engineering_Sync</span>
+                        </div>
+                        <h3 class="text-4xl font-extrabold mb-6 italic tracking-tight leading-none text-white group-hover:text-purple-400 transition">Native Dialect vs. Offshore Support.</h3>
+                        <p class="text-gray-400 leading-relaxed mb-10 text-lg">Analyzing the psychological comfort of US homeowners when interacting with native US voice synthesis versus traditional offshore call centers. How trust impacts booking rates for HVAC and Plumbing emergencies.</p>
+                    </div>
+                    <div class="flex justify-between items-center text-[11px] font-black uppercase text-gray-500 tracking-[0.3em] border-t border-white/5 pt-8">
+                        <span>Read Case Study</span>
+                        <i data-lucide="arrow-right-circle" class="w-6 h-6 text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all"></i>
+                    </div>
+                </div>
+
+                
+                <div class="glass-card p-10 flex flex-col justify-between group md:col-span-2 relative overflow-hidden">
+                    <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-600/10 blur-[100px] pointer-events-none"></div>
+                    <div class="grid md:grid-cols-2 gap-10 relative z-10">
+                        <div>
+                            <div class="flex justify-between items-start mb-12">
+                                <i data-lucide="layers-3" class="w-16 h-16 text-blue-500 group-hover:animate-pulse transition"></i>
+                            </div>
+                            <h3 class="text-4xl font-extrabold mb-6 italic tracking-tight leading-none text-white group-hover:text-blue-400 transition">Mapping Your Logic: Audit Your Own Bottenecks.</h3>
+                            <p class="text-gray-400 leading-relaxed text-lg">A systematic guide to auditing your operational workflows, from dispatch to invoicing. Learn how to map your dependencies and identify the primary friction points where manual work is destroying your margin.</p>
+                        </div>
+                        <div class="p-10 bg-white/5 rounded-[3rem] border border-white/10 flex flex-col items-center justify-center relative z-10 animate-float">
+                            <i data-lucide="git-branch-plus" class="text-blue-500 w-24 h-24 mb-6"></i>
+                            <p class="mt-4 text-[9px] font-black text-gray-600 uppercase tracking-widest">Logic Mapping Tool: ACTIVE</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-[11px] font-black uppercase text-gray-500 tracking-[0.3em] border-t border-white/5 pt-8 mt-10 relative z-10">
+                        <span>Audit Tool (Engineering Demo)</span>
+                        <i data-lucide="arrow-right-circle" class="w-6 h-6 text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-16 text-center border-t border-white/5 opacity-40 px-6">
+        <p class="text-[10px] font-black tracking-[0.5em] uppercase mb-4 text-blue-500">GoDigitize Online | USA Core</p>
+        <p class="text-xs text-gray-600 font-mono">SOC2 Compliant • North American Nodes • AES-256 Encryption</p>
+        <p class="mt-8 text-[9px] uppercase tracking-[1em]">© 2026 Engineering Growth for US Home Services</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const pulse = document.getElementById('cursor-pulse');
+        document.addEventListener('mousemove', (e) => { pulse.style.left = e.clientX + 'px'; pulse.style.top = e.clientY + 'px'; });
+    </script>
+</body>
+</html>
