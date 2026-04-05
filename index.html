@@ -3,185 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>GoDigitize Online | US Neural Infrastructure</title>
-<meta name="description" content="GoDigitize Online provides neural infrastructure and automation for US Home Service enterprises. Boost growth with zero-latency systems.">
-<meta name="keywords" content="Automation, US Home Services, Neural Infrastructure, GoDigitize">
-<link rel="icon" type="image/png" href="logo.png">
+    <title>GoDigitize | Enterprise AI Agents & CX Automation</title>
+    <link rel="icon" type="image/png" href="Logo.jpeg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-        :root { --primary: #3b82f6; --accent: #8b5cf6; --bg-dark: #020617; }
-        body { font-family: 'Space Grotesk', sans-serif; background-color: var(--bg-dark); color: #f8fafc; overflow-x: hidden; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        :root { --primary: #0066ff; --accent: #00d4ff; --bg-light: #ffffff; --glow: rgba(0, 102, 255, 0.4); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-light); color: #0f172a; overflow-x: hidden; }
         
-        #cursor-pulse {
-            position: fixed; width: 450px; height: 450px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
-            pointer-events: none; z-index: 99; transform: translate(-50%, -50%);
-        }
-
-        .mesh-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%); z-index: -1; }
-        .glass-card { background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 2.5rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        .glass-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .glass-card { background: #ffffff; border: 1px solid #eef2f6; border-radius: 2rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); }
+        .glass-card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px -15px rgba(0, 102, 255, 0.15); border-color: var(--primary); }
         
-        .hero-title { font-size: clamp(3.5rem, 9vw, 7rem); line-height: 0.85; font-weight: 800; letter-spacing: -0.05em; }
+        .product-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 2.5rem; padding: 3rem; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .product-card:hover { border-color: var(--primary); transform: scale(1.02); box-shadow: 0 0 40px var(--glow); }
 
-        @keyframes floatingBox { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-25px) rotate(1deg); } }
-        .animate-float { animation: floatingBox 7s ease-in-out infinite; }
+        .feature-gradient { background: radial-gradient(circle at 10% 20%, rgba(0, 102, 255, 0.03) 0%, transparent 50%); }
+        .gradient-text { background: linear-gradient(to right, #0044ff, #00aaff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
+        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid #f1f5f9; }
+        
+        #video-container { position: relative; border-radius: 3rem; overflow: hidden; box-shadow: 0 40px 80px -20px rgba(0, 102, 255, 0.15); max-width: 1000px; margin: 0 auto; border: 12px solid white; }
+        
+        .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .scroll-reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-30px); transition: all 0.8s ease; }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
 
-        .input-field { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 1.25rem; padding: 1.25rem; width: 100%; color: white; outline: none; }
-        .input-field:focus { border-color: var(--primary); background: rgba(59, 130, 246, 0.05); }
-
-        .faq-content { max-height: 0; overflow: hidden; transition: all 0.5s ease; opacity: 0; }
-        .faq-item.active .faq-content { max-height: 500px; padding-top: 1.5rem; opacity: 1; }
-        #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: #3b82f6; z-index: 200; width: 0%; }
+        .nav-link { text-[11px] font-black uppercase tracking-[0.25em] text-slate-600 hover:text-blue-600 transition; }
+        .input-field { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 1.25rem; padding: 1.25rem; width: 100%; color: #0f172a; outline: none; transition: all 0.3s; font-weight: 600; }
+        .input-field:focus { border-color: var(--primary); background: white; box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.05); }
+        
+        .dot-pattern { background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 40px 40px; }
+        
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+        .hovering-element { animation: float 6s ease-in-out infinite; }
+        .hovering-slow { animation: float 8s ease-in-out infinite; }
     </style>
 </head>
-<body class="selection:bg-blue-500/30">
-    <div id="progress-bar"></div>
-    <div id="cursor-pulse"></div>
-    <div class="mesh-bg"></div>
+<body class="selection:bg-cyan-100 dot-pattern">
 
-    <nav class="fixed top-0 w-full z-[150] px-6 py-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center glass-card px-10 py-4">
+    <button onclick="document.getElementById('contact').scrollIntoView()" class="fixed bottom-8 right-8 z-[250] bg-blue-600 text-white p-5 rounded-full shadow-2xl hover:scale-110 transition-all active:scale-95 md:flex hidden items-center gap-3 group">
+        <i data-lucide="calendar" class="w-6 h-6"></i>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 font-bold whitespace-nowrap">Free Audit</span>
+    </button>
+
+    <div id="progress-bar" class="fixed top-0 left-0 h-1 bg-cyan-600 z-[210] transition-all duration-100"></div>
+    <nav class="fixed top-0 w-full z-[200] glass-nav transition-all duration-300" id="main-nav">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-xl shadow-lg shadow-blue-600/20 object-cover">
-                <span class="text-2xl font-bold italic tracking-tighter">GoDigitize<span class="text-blue-500">.Online</span></span>
+                <img src="Logo.jpeg" alt="Logo" class="w-10 h-10 rounded-lg object-cover">
+                <span class="text-2xl font-black tracking-tighter text-slate-900 uppercase">GoDigitize<span class="text-blue-600">.</span></span>
             </div>
-            <div class="hidden lg:flex space-x-12 text-[11px] font-black uppercase tracking-[0.3em] text-gray-500">
-    <a href="logic.html" class="hover:text-white transition">System Logic</a>
-    <a href="insights.html" class="hover:text-white transition">Insights</a>
-    <a href="#contact" class="hover:text-white transition">Technical Support</a>
-</div>
-            <button onclick="document.getElementById('contact').scrollIntoView()" class="bg-white text-black px-8 py-3 rounded-2xl text-xs font-black hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105">BOOK AUDIT</button>
+            <div class="hidden md:flex space-x-10">
+                <a href="#essential" class="nav-link">The Logic</a>
+                <a href="#products" class="nav-link">Systems</a>
+                <a href="#process" class="nav-link">Roadmap</a>
+            </div>
+            <button onclick="document.getElementById('contact').scrollIntoView()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-2xl text-[10px] font-black transition-all shadow-xl shadow-blue-600/20 uppercase tracking-widest">Deploy Systems</button>
         </div>
     </nav>
 
-    <section class="min-h-screen flex items-center px-6 pt-32">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-            <div class="animate__animated animate__fadeInLeft">
-                <div class="inline-flex items-center space-x-3 bg-blue-500/5 border border-blue-500/10 px-5 py-2 rounded-full text-blue-400 text-[11px] font-black tracking-[0.4em] mb-10 uppercase">
-                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-ping"></span>
-                    <span>US_EAST_NODE_ACTIVE v2.1</span>
-                </div>
-                <h1 class="hero-title mb-10">Stop Trading <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500">Human Time</span> <br>For Growth.</h1>
-                <p class="text-gray-400 text-2xl max-w-xl mb-12 leading-relaxed font-light">The neural operating system built exclusively for high-scale US Home Service enterprises.</p>
-                <div class="flex flex-wrap gap-6">
-                    <button onclick="document.getElementById('contact').scrollIntoView()" class="bg-blue-600 px-12 py-6 rounded-[2rem] font-black flex items-center space-x-4 hover:bg-blue-700 transition shadow-2xl shadow-blue-600/30">
-                        <span>DEPLOY NEURAL CORE</span><i data-lucide="arrow-right"></i>
-                    </button>
-                    <div class="flex items-center space-x-4 ml-4">
-                        <div class="w-12 h-12 rounded-full border border-blue-500/30 bg-blue-500/10 flex items-center justify-center font-bold italic text-blue-400">MR</div>
-                        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest leading-none">Melvin Ross<br><span class="text-blue-500/50 italic">Chief Systems Engineer</span></p>
-                    </div>
-                </div>
+    <section class="relative min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="absolute inset-0 -z-10">
+            <img src="Banner.png" class="w-full h-full object-cover opacity-100
+            ">
+            <div class="absolute inset-0 bg-gradient-to-b from-white/0 via-white/60 to-white"></div>
+            <div class="absolute inset-0 backdrop-blur-[1px]"></div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto text-center hovering-element">
+            <div class="inline-block px-4 py-1.5 mb-8 rounded-full border border-blue-600/10 bg-blue-600/5 text-blue-600 text-[10px] font-black tracking-[0.4em] uppercase">
+                NEURAL_OPERATIONS_HUB_2026
             </div>
-            
-            <div class="relative hidden lg:block animate-float">
-                <div class="w-full aspect-square glass-card p-16 flex flex-col justify-between border-white/10 relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="flex justify-between items-start relative z-10">
-                        <i data-lucide="cpu" class="text-blue-500 w-12 h-12"></i>
-                        <div class="text-right">
-                            <span class="block font-mono text-[10px] text-blue-400">HOST: US-EAST-1</span>
-                            <span class="block font-mono text-[10px] text-gray-600 uppercase">LATENCY: 12MS</span>
-                        </div>
-                    </div>
-                    <div class="p-10 bg-white/5 rounded-[3rem] border border-white/5 flex flex-col items-center justify-center relative z-10">
-                        <i data-lucide="activity" class="text-blue-500 w-24 h-24 animate-pulse"></i>
-                        <p class="mt-4 text-[9px] font-black text-gray-600 uppercase tracking-widest">Processing US Traffic</p>
-                    </div>
-                    <div class="flex justify-between items-center relative z-10">
-                        <span class="text-[10px] font-bold text-gray-600 italic">GoDigitize Core</span>
-                        <div class="flex space-x-1"><div class="w-1 h-3 bg-blue-500/30"></div><div class="w-1 h-5 bg-blue-500"></div><div class="w-1 h-2 bg-blue-500/50"></div></div>
-                    </div>
-                </div>
+            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tight text-slate-900 animate__animated animate__fadeInUp">AI Agents that <br><span class="gradient-text">Reason & Adapt.</span></h1>
+            <p class="text-xl text-slate-500 font-medium mb-12 max-w-2xl mx-auto leading-relaxed animate__animated animate__fadeInUp animate__delay-1s">Replace static bots with autonomous neural agents that resolve customer intents and capture revenue 24/7.</p>
+            <div class="flex justify-center gap-6 animate__animated animate__fadeInUp animate__delay-2s">
+                <button onclick="document.getElementById('essential').scrollIntoView()" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-black text-xs hover:bg-blue-600 transition uppercase tracking-widest shadow-2xl">The Strategy</button>
+                <button onclick="document.getElementById('contact').scrollIntoView()" class="border-2 border-slate-200 px-10 py-5 rounded-2xl font-black text-xs hover:border-blue-600 hover:text-blue-600 transition uppercase tracking-widest bg-white">Book Audit</button>
             </div>
         </div>
     </section>
 
+    <!-- Gap Fill: Integrations Section -->
+    <section class="py-12 border-y border-slate-100 bg-white/50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-[10px] font-black tracking-[0.4em] uppercase text-center text-slate-400 mb-8">Seamless Integration Ecosystem</p>
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition duration-700">
+                <div class="flex items-center gap-2 font-black text-xl text-slate-900"><i data-lucide="database" class="text-blue-600"></i> ServiceTitan</div>
+                <div class="flex items-center gap-2 font-black text-xl text-slate-900"><i data-lucide="calendar" class="text-blue-600"></i> Jobber</div>
+                <div class="flex items-center gap-2 font-black text-xl text-slate-900"><i data-lucide="layout-grid" class="text-blue-600"></i> Salesforce</div>
+                <div class="flex items-center gap-2 font-black text-xl text-slate-900"><i data-lucide="webhook" class="text-blue-600"></i> Zapier</div>
+                <div class="flex items-center gap-2 font-black text-xl text-slate-900"><i data-lucide="message-square" class="text-blue-600"></i> GoHighLevel</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 relative">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-[120px] opacity-30 hovering-slow"></div>
+        <div id="video-container" class="group relative">
+            <video id="offer-video" class="w-full aspect-video object-cover" muted loop playsinline>
+                <source src="offer.mp4.mp4" type="video/mp4">
+            </video>
+            
+            <button id="mute-btn" class="absolute bottom-6 right-6 z-20 bg-white/90 backdrop-blur-md p-4 rounded-full border border-slate-100 text-slate-900 hover:bg-blue-600 hover:text-white transition shadow-xl">
+                <i id="mute-icon" data-lucide="volume-x" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Gap Fill: Comparison ROI Section -->
     <section class="py-32 px-6">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-black mb-20 italic uppercase tracking-tighter text-center">The <span class="text-blue-500">GoDigitize</span> Edge</h2>
-            <div class="overflow-x-auto glass-card p-8 md:p-16">
-                <table class="w-full text-left">
-                    <thead><tr class="border-b border-white/10"><th class="pb-8 text-gray-500 uppercase tracking-widest text-xs">Feature Set</th><th class="pb-8 text-gray-500 uppercase tracking-widest text-xs">Old Model</th><th class="pb-8 text-blue-500 uppercase tracking-widest text-xs">GoDigitize Neural</th></tr></thead>
-                    <tbody class="text-lg">
-                        <tr class="border-b border-white/5"><td class="py-8 font-bold">Response Speed</td><td class="py-8 text-gray-500">10-15 Minutes</td><td class="py-8 text-white font-black">< 3 Seconds</td></tr>
-                        <tr class="border-b border-white/5"><td class="py-8 font-bold">Availability</td><td class="py-8 text-gray-500">Office Hours</td><td class="py-8 text-white font-black">24/7/365 Native</td></tr>
-                        <tr><td class="py-8 font-bold">Integration</td><td class="py-8 text-gray-500">Manual Entry</td><td class="py-8 text-blue-400 font-black">ServiceTitan / Jobber API</td></tr>
-                    </tbody>
-                </table>
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-black tracking-tighter text-slate-900 uppercase">The Efficiency <span class="text-blue-600">Divide.</span></h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card p-10 bg-slate-50 border-none">
+                    <h4 class="text-xl font-black mb-6 text-slate-400">TRADITIONAL OPERATIONS</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-slate-500 font-bold"><i data-lucide="x-circle" class="text-red-400"></i> 15-Minute Lead Response Time</li>
+                        <li class="flex items-center gap-3 text-slate-500 font-bold"><i data-lucide="x-circle" class="text-red-400"></i> Limited to 9-5 Office Hours</li>
+                        <li class="flex items-center gap-3 text-slate-500 font-bold"><i data-lucide="x-circle" class="text-red-400"></i> Manual CRM Data Entry</li>
+                    </ul>
+                </div>
+                <div class="glass-card p-10 bg-blue-600 border-none shadow-blue-200">
+                    <h4 class="text-xl font-black mb-6 text-blue-200">GO DIGITIZE NEURAL</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-white font-bold"><i data-lucide="check-circle" class="text-blue-300"></i> Instant 3-Second Response</li>
+                        <li class="flex items-center gap-3 text-white font-bold"><i data-lucide="check-circle" class="text-blue-300"></i> 24/7/365 Autonomous Coverage</li>
+                        <li class="flex items-center gap-3 text-white font-bold"><i data-lucide="check-circle" class="text-blue-300"></i> Direct API Sync & Optimization</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="infra" class="py-32 px-6 bg-white/[0.01]">
-        <div class="max-w-7xl mx-auto glass-card p-16 md:p-24 relative overflow-hidden">
-            <div class="absolute -right-40 -top-40 w-96 h-96 bg-blue-600/10 blur-[120px]"></div>
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div>
-                    <h2 class="text-4xl font-black mb-8 italic uppercase tracking-tighter text-blue-500">US-Native Infrastructure</h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-10">Optimized for domestic high-performance. Our neural hosting is distributed across Tier-3 data centers in North America to ensure zero-latency voice synthesis and total data residency compliance.</p>
-                    <div class="space-y-8">
-                        <div class="flex items-center space-x-6">
-                            <div class="w-12 h-12 glass-card rounded-xl flex items-center justify-center"><i data-lucide="shield-check" class="text-blue-500"></i></div>
-                            <div><p class="font-black text-sm uppercase tracking-widest">SOC2 & HIPAA Ready</p><p class="text-gray-500 text-xs">Bank-grade data encryption protocols.</p></div>
+    <section id="essential" class="py-32 px-6 scroll-reveal">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+            <div class="relative hovering-element">
+                <div class="absolute -inset-10 bg-blue-100/50 blur-[120px] rounded-full"></div>
+                <img src="go2.jpeg" alt="go2.jpeg" class="relative z-10 w-full rounded-[3rem] shadow-2xl border-4 border-white transition-all duration-700">
+            </div>
+            <div class="space-y-8">
+                <div class="text-blue-600 font-black text-xs tracking-[0.5em] uppercase">The Necessity of Intelligence</div>
+                <h2 class="text-5xl md:text-6xl font-black tracking-tighter text-slate-900 leading-[1.1]">AI is the <span class="text-blue-600">Nervous System</span> of Scale.</h2>
+                <p class="text-slate-500 text-xl leading-relaxed font-medium">
+                    In the modern economy, AI is not an option—it is the infrastructure of survival. From **Healthcare** triage to **Real Estate** qualification and **Home Service** dispatching, AI creates a seamless link between a customer's pain and your solution.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-6 glass-card border-l-8 border-blue-600">
+                        <i data-lucide="zap" class="text-blue-600 w-6 h-6 mt-1"></i>
+                        <p class="text-sm font-bold text-slate-800">Scale operations indefinitely without adding a single dollar to your payroll overhead.</p>
+                    </div>
+                    <div class="flex items-start gap-4 p-6 glass-card border-l-8 border-slate-900">
+                        <i data-lucide="globe" class="text-slate-900 w-6 h-6 mt-1"></i>
+                        <p class="text-sm font-bold text-slate-800">Capture 100% of lead intent in real-time across every digital sector, 24/7/365.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-32 px-6 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20 text-center">
+                <h2 class="text-6xl font-black mb-4 uppercase tracking-tighter text-slate-900">The <span class="text-blue-600">Neural</span> Suite</h2>
+                <p class="text-slate-400 font-bold text-[11px] tracking-[0.5em] uppercase">Systems Built for High-Volume Conversion</p>
+            </div>
+
+            <div class="space-y-40">
+                <div class="grid lg:grid-cols-12 gap-12 items-center scroll-reveal">
+                    <div class="lg:col-span-7">
+                        <div class="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mb-8">
+                            <i data-lucide="mic-2" class="text-blue-600 w-8 h-8"></i>
                         </div>
-                        <div class="flex items-center space-x-6">
-                            <div class="w-12 h-12 glass-card rounded-xl flex items-center justify-center"><i data-lucide="server" class="text-purple-500"></i></div>
-                            <div><p class="font-black text-sm uppercase tracking-widest">US-East & West Nodes</p><p class="text-gray-500 text-xs">Redundant hosting for 99.99% uptime.</p></div>
+                        <h3 class="text-4xl font-bold mb-6">AI Receptionist (Neural Voice)</h3>
+                        <p class="text-slate-500 text-lg leading-relaxed mb-8 font-medium">Our Neural Voice agents are indistinguishable from human receptionists. They handle thousands of simultaneous inbound calls, answer complex business FAQs, and book appointments directly into your CRM with zero wait time.</p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="p-5 bg-white border border-slate-100 rounded-2xl shadow-sm">
+                                <p class="text-blue-600 font-black mb-1 uppercase text-[10px] tracking-widest">Voice Synthesis</p>
+                                <p class="text-xs font-bold text-slate-400">Human-grade native English dialect.</p>
+                            </div>
+                            <div class="p-5 bg-white border border-slate-100 rounded-2xl shadow-sm">
+                                <p class="text-slate-900 font-black mb-1 uppercase text-[10px] tracking-widest">Logic Hub</p>
+                                <p class="text-xs font-bold text-slate-400">Direct sync with ServiceTitan & Jobber.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 p-12 glass-card flex items-center justify-center bg-blue-50">
+                        <i data-lucide="phone-call" class="w-32 h-32 text-blue-600/20 hovering-element"></i>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-12 items-center scroll-reveal">
+                    <div class="lg:col-span-5 order-2 lg:order-1 p-12 glass-card flex items-center justify-center bg-slate-900">
+                        <i data-lucide="zap" class="w-32 h-32 text-blue-400 animate-pulse"></i>
+                    </div>
+                    <div class="lg:col-span-7 order-1 lg:order-2">
+                        <div class="w-16 h-16 bg-slate-900/10 rounded-2xl flex items-center justify-center mb-8">
+                            <i data-lucide="phone-missed" class="text-slate-900 w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-4xl font-bold mb-6">Missed Call Back Agent</h3>
+                        <p class="text-slate-500 text-lg leading-relaxed mb-8 font-medium">In business, a missed call is lost revenue. Our agent detects a failed connection and triggers an instant, AI-driven SMS conversation within milliseconds. It engages the lead while they are still hot, preventing them from calling your competition.</p>
+                        <div class="p-8 border-l-8 border-blue-600 bg-blue-50 italic text-slate-600 font-bold">
+                            "We recovered $18,500 in potentially lost leads in the first 30 days of activation."
                         </div>
                     </div>
                 </div>
-                <div class="glass-card h-[300px] border-blue-500/20 bg-blue-500/5 flex flex-col items-center justify-center">
-                    <i data-lucide="shield" class="w-20 h-20 text-blue-500 mb-6 animate-pulse"></i>
-                    <p class="font-mono text-[10px] text-gray-500 uppercase tracking-[0.4em]">Secure_US_Core: ACTIVE</p>
+
+                <div class="grid md:grid-cols-2 gap-10 scroll-reveal">
+                    <div class="product-card group bg-white">
+                        <i data-lucide="message-square" class="text-blue-600 w-12 h-12 mb-8 group-hover:scale-110 transition"></i>
+                        <h4 class="text-2xl font-black mb-4 text-slate-900">SMS Automation Engine</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">Beyond reminders. We build complex nurture sequences that re-activate cold leads and request reviews with a 98% open rate.</p>
+                        <div class="text-[10px] font-black tracking-[0.3em] text-blue-600 uppercase">Maximum Retention Hub</div>
+                    </div>
+                    <div class="product-card group bg-white">
+                        <i data-lucide="sparkles" class="text-slate-900 w-12 h-12 mb-8 group-hover:rotate-12 transition"></i>
+                        <h4 class="text-2xl font-black mb-4 text-slate-900">AI Social Content Hub</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">Dominate your feed with zero effort. Our models generate brand-consistent graphics and viral captions tailored to your industry trends daily.</p>
+                        <div class="text-[10px] font-black tracking-[0.3em] text-slate-900 uppercase">Algorithmic Growth Sync</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 px-6 bg-gradient-to-b from-transparent to-blue-900/10">
-        <div class="max-w-5xl mx-auto glass-card p-12 md:p-24 border-blue-500/20 shadow-2xl relative">
+    <section id="process" class="py-32 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-6xl font-black text-center mb-24 uppercase tracking-tighter text-slate-900">The Neural <span class="text-blue-600">Roadmap</span></h2>
+            <div class="grid md:grid-cols-3 gap-12 relative">
+                <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-100 hidden md:block"></div>
+                <div class="glass-card p-12 text-center relative z-10 scroll-reveal">
+                    <div class="w-14 h-14 bg-blue-600 text-white rounded-full mx-auto flex items-center justify-center font-black mb-6">01</div>
+                    <h4 class="text-xl font-black mb-4 text-slate-900">Logic Audit</h4>
+                    <p class="text-slate-400 font-bold text-sm">Mapping your manual bottlenecks and designing the AI stack.</p>
+                </div>
+                <div class="glass-card p-12 text-center relative z-10 scroll-reveal">
+                    <div class="w-14 h-14 bg-slate-900 text-white rounded-full mx-auto flex items-center justify-center font-black mb-6">02</div>
+                    <h4 class="text-xl font-black mb-4 text-slate-900">Neural Training</h4>
+                    <p class="text-slate-400 font-bold text-sm">Training agents on your specific business knowledge base.</p>
+                </div>
+                <div class="glass-card p-12 text-center relative z-10 scroll-reveal">
+                    <div class="w-14 h-14 bg-blue-600 text-white rounded-full mx-auto flex items-center justify-center font-black mb-6">03</div>
+                    <h4 class="text-xl font-black mb-4 text-slate-900">Core Launch</h4>
+                    <p class="text-slate-400 font-bold text-sm">24/7 deployment with full CRM bi-directional sync.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 px-6 bg-slate-50">
+        <div class="max-w-5xl mx-auto glass-card p-12 md:p-24 border-slate-200 shadow-2xl relative">
             <div class="text-center mb-16">
-                <h2 class="text-6xl font-black mb-6 tracking-tighter italic uppercase">Reach <span class="text-blue-500">The Core.</span></h2>
-                <p class="text-gray-500 uppercase text-[11px] font-black tracking-[0.5em] mb-10">Connect Directly with Engineering</p>
-                
-                <div class="flex flex-col items-center gap-4">
-                    <a href="mailto:melvin@godigitize.online" class="text-2xl md:text-5xl font-bold text-blue-400 hover:text-white transition duration-500 underline decoration-blue-500/30 underline-offset-[12px] break-all">
+                <h2 class="text-6xl font-black mb-6 tracking-tighter text-slate-900 uppercase">Reach <span class="text-blue-600">The Hub.</span></h2>
+                <div class="flex flex-col items-center gap-4 mb-12">
+                    <a href="mailto:melvin@godigitize.online" class="text-xl md:text-3xl font-black text-slate-900 hover:text-blue-600 transition underline decoration-blue-200 underline-offset-8">
                         melvin@godigitize.online
                     </a>
-                    <span class="text-[10px] font-black uppercase text-gray-600 tracking-widest mt-2">Personal Line: Melvin Ross</span>
+                    <div class="flex flex-wrap justify-center gap-4 mt-8">
+                        <a href="https://wa.me/18542566899" target="_blank" class="flex items-center space-x-2 bg-slate-900 text-white px-8 py-4 rounded-2xl hover:bg-blue-600 transition group">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                            <span class="text-[10px] font-black uppercase tracking-widest">WhatsApp Core</span>
+                        </a>
+                        <a href="https://m.facebook.com/profile.php?id=61574326983390" target="_blank" class="flex items-center space-x-2 bg-white border-2 border-slate-100 text-slate-900 px-8 py-4 rounded-2xl hover:border-blue-600 transition group">
+                            <i data-lucide="facebook" class="w-4 h-4"></i>
+                            <span class="text-[10px] font-black uppercase tracking-widest">Facebook</span>
+                        </a>
+                    </div>
                 </div>
             </div>
             
             <form action="https://formspree.io/f/xbdzekwl" method="POST" class="grid md:grid-cols-2 gap-10">
-                <div class="space-y-3"><label class="text-[11px] uppercase font-black text-gray-600 ml-4 tracking-[0.2em]">Founder Identity</label><input type="text" name="name" placeholder="Full Name" required class="input-field"></div>
-                <div class="space-y-3"><label class="text-[11px] uppercase font-black text-gray-600 ml-4 tracking-[0.2em]">Neural Link (Email)</label><input type="email" name="email" placeholder="owner@company.com" required class="input-field"></div>
-                <div class="md:col-span-2 space-y-3"><label class="text-[11px] uppercase font-black text-gray-600 ml-4 tracking-[0.2em]">Operations Bottleneck</label><textarea name="details" placeholder="Describe the manual processes you want to automate..." class="input-field h-52"></textarea></div>
-                <button type="submit" class="md:col-span-2 bg-blue-600 py-8 rounded-[2.5rem] font-black text-2xl hover:bg-blue-700 transition shadow-2xl shadow-blue-500/40 group flex items-center justify-center gap-4">
-                    AUTHORIZE CONNECTION <i data-lucide="zap"></i>
+                <div class="space-y-2"><label class="text-[10px] uppercase font-black text-slate-400 ml-4 tracking-widest">Full Name</label><input type="text" name="name" placeholder="John Doe" required class="input-field"></div>
+                <div class="space-y-2"><label class="text-[10px] uppercase font-black text-slate-400 ml-4 tracking-widest">Business Email</label><input type="email" name="email" placeholder="john@company.com" required class="input-field"></div>
+                <div class="md:col-span-2 space-y-2"><label class="text-[10px] uppercase font-black text-slate-400 ml-4 tracking-widest">Automation Goals</label><textarea name="message" placeholder="Describe your manual bottlenecks..." class="input-field h-40"></textarea></div>
+                <button type="submit" class="md:col-span-2 bg-blue-600 py-6 rounded-[2rem] font-black text-lg text-white hover:bg-slate-900 transition shadow-2xl shadow-blue-600/20 flex items-center justify-center gap-4 uppercase tracking-widest">
+                    Initiate Audit <i data-lucide="zap"></i>
                 </button>
             </form>
         </div>
     </section>
 
-    <footer class="py-24 text-center border-t border-white/5 opacity-40">
-        <p class="text-[10px] font-black tracking-[0.5em] uppercase mb-4 text-blue-500">GoDigitize Online | USA Core</p>
-        <p class="text-xs text-gray-600 font-mono">SOC2 Compliant • North American Nodes • AES-256 Encryption</p>
-        <p class="mt-8 text-[9px] uppercase tracking-[1em]">© 2026 Engineering Growth for US Home Services</p>
+    <footer class="py-24 text-center bg-white border-t border-slate-100 px-6">
+        <div class="max-w-7xl mx-auto">
+            <img src="Logo.jpeg" alt="Logo" class="w-12 h-12 mx-auto rounded-xl mb-6 opacity-30">
+            <p class="text-[10px] font-black tracking-[0.5em] uppercase mb-4 text-slate-400">GoDigitize | Neural Operations</p>
+            <p class="text-xs text-slate-300 font-bold italic">SOC2 Compliant • North American Core • AES-256 Shield</p>
+            <p class="mt-8 text-[9px] font-black uppercase tracking-[1em] text-slate-300">© 2026 Engineering Growth Globally</p>
+        </div>
     </footer>
 
     <script>
         lucide.createIcons();
-        const pulse = document.getElementById('cursor-pulse');
-        document.addEventListener('mousemove', (e) => { pulse.style.left = e.clientX + 'px'; pulse.style.top = e.clientY + 'px'; });
+        
+        const video = document.getElementById('offer-video');
+        const muteBtn = document.getElementById('mute-btn');
+        const muteIcon = document.getElementById('mute-icon');
+        const progressBar = document.getElementById('progress-bar');
+
+        // Scroll Reveal logic
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+        // Progress Bar & Nav logic
         window.addEventListener('scroll', () => {
-            const bar = document.getElementById('progress-bar');
-            const total = document.documentElement.scrollHeight - window.innerHeight;
-            bar.style.width = ((window.pageYOffset / total) * 100) + '%';
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            progressBar.style.width = scrollPercent + '%';
+            
+            if (window.scrollY > 50) {
+                document.getElementById('main-nav').classList.add('py-2');
+            } else {
+                document.getElementById('main-nav').classList.remove('py-2');
+            }
+
+            // Auto-play video on scroll
+            const rect = video.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                video.play();
+            }
+        });
+
+        // Mute/Unmute toggle
+        muteBtn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            muteIcon.setAttribute('data-lucide', video.muted ? 'volume-x' : 'volume-2');
+            lucide.createIcons();
         });
     </script>
 </body>
