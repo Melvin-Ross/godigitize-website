@@ -30,7 +30,8 @@
         .gradient-text { background: linear-gradient(to right, #0044ff, #00aaff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
         .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid #f1f5f9; }
         
-        #video-container { position: relative; border-radius: 3rem; overflow: hidden; box-shadow: 0 40px 80px -20px rgba(0, 102, 255, 0.15); max-width: 1000px; margin: 0 auto; border: 12px solid white; }
+        #video-container { position: relative; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 40px 80px -20px rgba(0, 102, 255, 0.15); max-width: 1000px; margin: 0 auto; border: 4px solid white; }
+        @media (min-width: 768px) { #video-container { border-radius: 3rem; border-width: 12px; } }
         
         .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .scroll-reveal.active { opacity: 1; transform: translateY(0); }
@@ -45,6 +46,7 @@
         
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
         .hovering-element { animation: float 6s ease-in-out infinite; }
+        #mobile-menu { transition: all 0.3s ease-in-out; }
         .hovering-slow { animation: float 8s ease-in-out infinite; }
     </style>
 </head>
@@ -62,18 +64,27 @@
                 <img src="Logo.jpeg" alt="Logo" class="w-10 h-10 rounded-lg object-cover">
                 <span class="text-2xl font-black tracking-tighter text-slate-900 uppercase">GoDigitize<span class="text-blue-600">.</span></span>
             </div>
-            <div class="hidden md:flex space-x-10">
+            <div class="hidden md:flex space-x-8 lg:space-x-10">
                 <a href="#essential" class="nav-link">The Logic</a>
                 <a href="#products" class="nav-link">Systems</a>
                 <a href="#process" class="nav-link">Roadmap</a>
             </div>
-            <button onclick="document.getElementById('contact').scrollIntoView()" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-2xl text-[10px] font-black transition-all shadow-xl shadow-blue-600/20 uppercase tracking-widest">Deploy Systems</button>
+            <div class="flex items-center gap-4">
+                <button onclick="document.getElementById('contact').scrollIntoView()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-8 py-3 rounded-2xl text-[10px] font-black transition-all shadow-xl shadow-blue-600/20 uppercase tracking-widest">Deploy</button>
+                <button id="menu-toggle" class="md:hidden text-slate-900 focus:outline-none"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 p-8 flex flex-col items-center space-y-6">
+            <a href="#essential" class="nav-link text-sm" onclick="toggleMenu()">The Logic</a>
+            <a href="#products" class="nav-link text-sm" onclick="toggleMenu()">Systems</a>
+            <a href="#process" class="nav-link text-sm" onclick="toggleMenu()">Roadmap</a>
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center justify-center px-6 pt-20">
+    <section class="relative min-h-[90vh] md:min-h-screen flex items-center justify-center px-6 pt-24 md:pt-20">
         <div class="absolute inset-0 -z-10">
-            <img src="Banner.png" class="w-full h-full object-cover opacity-100
+            <img src="Banner.png" class="w-100% h-100% object-cover opacity-100
             ">
             <div class="absolute inset-0 bg-gradient-to-b from-white/0 via-white/60 to-white"></div>
             <div class="absolute inset-0 backdrop-blur-[1px]"></div>
@@ -83,11 +94,11 @@
             <div class="inline-block px-4 py-1.5 mb-8 rounded-full border border-blue-600/10 bg-blue-600/5 text-blue-600 text-[10px] font-black tracking-[0.4em] uppercase">
                 NEURAL_OPERATIONS_HUB_2026
             </div>
-            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tight text-slate-900 animate__animated animate__fadeInUp">Go Digitize Online that <br><span class="gradient-text">Reason & Adapt.</span></h1>
+            <h1 class="text-4xl sm:text-6xl md:text-8xl font-black mb-8 leading-[1.1] md:leading-[0.9] tracking-tight text-slate-900 animate__animated animate__fadeInUp">Go Digitize Online that <br><span class="gradient-text">Reason & Adapt.</span></h1>
             <p class="text-xl text-slate-500 font-medium mb-12 max-w-2xl mx-auto leading-relaxed animate__animated animate__fadeInUp animate__delay-1s">Replace static bots with autonomous neural agents that resolve customer intents and capture revenue 24/7.</p>
-            <div class="flex justify-center gap-6 animate__animated animate__fadeInUp animate__delay-2s">
-                <button onclick="document.getElementById('essential').scrollIntoView()" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-black text-xs hover:bg-blue-600 transition uppercase tracking-widest shadow-2xl">The Strategy</button>
-                <button onclick="document.getElementById('contact').scrollIntoView()" class="border-2 border-slate-200 px-10 py-5 rounded-2xl font-black text-xs hover:border-blue-600 hover:text-blue-600 transition uppercase tracking-widest bg-white">Book Audit</button>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 animate__animated animate__fadeInUp animate__delay-2s">
+                <button onclick="document.getElementById('essential').scrollIntoView()" class="bg-slate-900 text-white px-10 py-5 rounded-2xl font-black text-xs hover:bg-blue-600 transition uppercase tracking-widest shadow-2xl w-full sm:w-auto">The Strategy</button>
+                <button onclick="document.getElementById('contact').scrollIntoView()" class="border-2 border-slate-200 px-10 py-5 rounded-2xl font-black text-xs hover:border-blue-600 hover:text-blue-600 transition uppercase tracking-widest bg-white w-full sm:w-auto">Book Audit</button>
             </div>
         </div>
     </section>
@@ -96,7 +107,7 @@
     <section class="py-12 border-y border-slate-100 bg-white/50 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <p class="text-[10px] font-black tracking-[0.4em] uppercase text-center text-slate-400 mb-8">Seamless Integration Ecosystem</p>
-            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition duration-700">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition duration-700">
                 <div class="flex items-center gap-2 font-black text-xl text-slate-900"><i data-lucide="database" class="text-blue-600"></i> ServiceTitan</div>
                 <div class="flex items-center gap-2 font-black text-xl text-slate-900"><i data-lucide="calendar" class="text-blue-600"></i> Jobber</div>
                 <div class="flex items-center gap-2 font-black text-xl text-slate-900"><i data-lucide="layout-grid" class="text-blue-600"></i> Salesforce</div>
@@ -120,13 +131,13 @@
     </section>
 
     <!-- Gap Fill: Comparison ROI Section -->
-    <section class="py-32 px-6">
+    <section class="py-16 md:py-32 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-black tracking-tighter text-slate-900 uppercase">The Efficiency <span class="text-blue-600">Divide.</span></h2>
+                <h2 class="text-3xl md:text-5xl font-black tracking-tighter text-slate-900 uppercase">The Efficiency <span class="text-blue-600">Divide.</span></h2>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass-card p-10 bg-slate-50 border-none">
+                <div class="glass-card p-6 md:p-10 bg-slate-50 border-none">
                     <h4 class="text-xl font-black mb-6 text-slate-400">TRADITIONAL OPERATIONS</h4>
                     <ul class="space-y-4">
                         <li class="flex items-center gap-3 text-slate-500 font-bold"><i data-lucide="x-circle" class="text-red-400"></i> 15-Minute Lead Response Time</li>
@@ -134,7 +145,7 @@
                         <li class="flex items-center gap-3 text-slate-500 font-bold"><i data-lucide="x-circle" class="text-red-400"></i> Manual CRM Data Entry</li>
                     </ul>
                 </div>
-                <div class="glass-card p-10 bg-blue-600 border-none shadow-blue-200">
+                <div class="glass-card p-6 md:p-10 bg-blue-600 border-none shadow-blue-200">
                     <h4 class="text-xl font-black mb-6 text-blue-200">GO DIGITIZE NEURAL</h4>
                     <ul class="space-y-4">
                         <li class="flex items-center gap-3 text-white font-bold"><i data-lucide="check-circle" class="text-blue-300"></i> Instant 3-Second Response</li>
@@ -146,15 +157,15 @@
         </div>
     </section>
 
-    <section id="essential" class="py-32 px-6 scroll-reveal">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+    <section id="essential" class="py-16 md:py-32 px-6 scroll-reveal">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-24 items-center">
             <div class="relative hovering-element">
                 <div class="absolute -inset-10 bg-blue-100/50 blur-[120px] rounded-full"></div>
-                <img src="go2.jpeg" alt="go2.jpeg" class="relative z-10 w-full rounded-[3rem] shadow-2xl border-4 border-white transition-all duration-700">
+                <img src="go2.jpeg" alt="go2.jpeg" class="relative z-10 w-full rounded-[2rem] md:rounded-[3rem] shadow-2xl border-4 border-white transition-all duration-700">
             </div>
             <div class="space-y-8">
                 <div class="text-blue-600 font-black text-xs tracking-[0.5em] uppercase">The Necessity of Intelligence</div>
-                <h2 class="text-5xl md:text-6xl font-black tracking-tighter text-slate-900 leading-[1.1]">AI is the <span class="text-blue-600">Nervous System</span> of Scale.</h2>
+                <h2 class="text-3xl md:text-6xl font-black tracking-tighter text-slate-900 leading-[1.1]">AI is the <span class="text-blue-600">Nervous System</span> of Scale.</h2>
                 <p class="text-slate-500 text-xl leading-relaxed font-medium">
                     In the modern economy, AI is not an option—it is the infrastructure of survival. From **Healthcare** triage to **Real Estate** qualification and **Home Service** dispatching, AI creates a seamless link between a customer's pain and your solution.
                 </p>
@@ -172,14 +183,14 @@
         </div>
     </section>
 
-    <section id="products" class="py-32 px-6 bg-slate-50/50">
+    <section id="products" class="py-16 md:py-32 px-6 bg-slate-50/50">
         <div class="max-w-7xl mx-auto">
             <div class="mb-20 text-center">
-                <h2 class="text-6xl font-black mb-4 uppercase tracking-tighter text-slate-900">The <span class="text-blue-600">Neural</span> Suite</h2>
+                <h2 class="text-4xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-slate-900">The <span class="text-blue-600">Neural</span> Suite</h2>
                 <p class="text-slate-400 font-bold text-[11px] tracking-[0.5em] uppercase">Systems Built for High-Volume Conversion</p>
             </div>
 
-            <div class="space-y-40">
+            <div class="space-y-24 md:space-y-40">
                 <div class="grid lg:grid-cols-12 gap-12 items-center scroll-reveal">
                     <div class="lg:col-span-7">
                         <div class="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mb-8">
@@ -237,9 +248,9 @@
         </div>
     </section>
 
-    <section id="process" class="py-32 px-6 bg-white">
+    <section id="process" class="py-16 md:py-32 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-6xl font-black text-center mb-24 uppercase tracking-tighter text-slate-900">The Neural <span class="text-blue-600">Roadmap</span></h2>
+            <h2 class="text-4xl md:text-6xl font-black text-center mb-16 md:mb-24 uppercase tracking-tighter text-slate-900">The Neural <span class="text-blue-600">Roadmap</span></h2>
             <div class="grid md:grid-cols-3 gap-12 relative">
                 <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-100 hidden md:block"></div>
                 <div class="glass-card p-12 text-center relative z-10 scroll-reveal">
@@ -261,12 +272,12 @@
         </div>
     </section>
 
-    <section id="contact" class="py-32 px-6 bg-slate-50">
-        <div class="max-w-5xl mx-auto glass-card p-12 md:p-24 border-slate-200 shadow-2xl relative">
+    <section id="contact" class="py-16 md:py-32 px-6 bg-slate-50">
+        <div class="max-w-5xl mx-auto glass-card p-8 md:p-24 border-slate-200 shadow-2xl relative">
             <div class="text-center mb-16">
-                <h2 class="text-6xl font-black mb-6 tracking-tighter text-slate-900 uppercase">Reach <span class="text-blue-600">The Hub.</span></h2>
+                <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-slate-900 uppercase">Reach <span class="text-blue-600">The Hub.</span></h2>
                 <div class="flex flex-col items-center gap-4 mb-12">
-                    <a href="mailto:melvin@godigitize.online" class="text-xl md:text-3xl font-black text-slate-900 hover:text-blue-600 transition underline decoration-blue-200 underline-offset-8">
+                    <a href="mailto:melvin@godigitize.online" class="text-lg md:text-3xl font-black text-slate-900 hover:text-blue-600 transition underline decoration-blue-200 underline-offset-8 break-all">
                         melvin@godigitize.online
                     </a>
                     <div class="flex flex-wrap justify-center gap-4 mt-8">
@@ -338,6 +349,19 @@
             if (rect.top < window.innerHeight && rect.bottom >= 0) {
                 video.play();
             }
+        });
+
+        // Mobile Menu Toggle logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
         });
 
         // Mute/Unmute toggle
